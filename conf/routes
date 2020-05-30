@@ -1,0 +1,17 @@
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#GET     /employee                            controllers.HomeController.getEmployee
+
+GET    /meli/ip-information/:ip              controllers.IpInformationController.getIpInformation(ip)
+GET    /meli/max-distance                    controllers.IpInformationController.getMaxDist
+GET    /meli/min-distance                    controllers.IpInformationController.getMinDist
+GET    /meli/avg-distance                    controllers.IpInformationController.getAvgDist
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
