@@ -1,9 +1,7 @@
 package services
 
-import model.errors._
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FlatSpec}
 
-class UserServiceTest extends FlatSpec with BeforeAndAfter with BeforeAndAfterAll with UserServiceTestSupport {
+class UserServiceTest { //with UserServiceTestSupport {
 /*
   val userService = new UserService(simulationServiceMock, simulationClientMock)
 

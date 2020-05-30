@@ -1,4 +1,4 @@
-name := "MLIpTracker"
+name := "ml-ip-tracker"
  
 version := "1.0" 
       
@@ -9,6 +9,11 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
       
 scalaVersion := "2.12.10"
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
 
 libraryDependencies ++= List(
   "com.softwaremill.sttp" %% "core" % "1.7.2",

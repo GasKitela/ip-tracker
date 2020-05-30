@@ -1,15 +1,12 @@
 package jsonsupport
 
-import hangouts._
 import external.restcountries.model.api.response.{CountryInformationResponse, Currency, Language}
 import external.datafixer.model.api.response.{CurrencyInformationResponse, Error}
 import external.distance24.model.DistanceResponse
 import external.ip2country.model.api.response.IpInformationResponse
-import model.IpServiceMetrics
 import model.api.response.{CurrencyResponse, IpMetricsResponse, IpTrackerResponse}
 import model.errors._
 import org.json4s.DefaultFormats
-import org.mongodb.scala.bson.ObjectId
 import play.api.libs.json.JsonNaming.SnakeCase
 import play.api.libs.json.{Json, JsonConfiguration}
 

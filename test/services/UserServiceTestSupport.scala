@@ -1,12 +1,7 @@
 package services
 
-import org.scalatest.mockito.MockitoSugar
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, Matchers}
-import org.mockito.ArgumentMatchers._
-import org.mockito.Mockito._
 
-
-trait UserServiceTestSupport extends Matchers with MockitoSugar {
+trait UserServiceTestSupport {
 /*
   val simulationServiceMock = mock[SimulationService]
   val simulationClientMock = mock[SimulationClient]
