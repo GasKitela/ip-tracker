@@ -10,24 +10,27 @@ import model.errors.HttpClientError
 import org.json4s.DefaultFormats
 import org.json4s.native.JsonMethods.parse
 import org.json4s.native.Serialization
+import play.api.Configuration
 import play.api.libs.ws.WSClient
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}
 import scala.util.{Failure, Success, Try}
 
-class Distance24Client @Inject()(ws: WSClient)(implicit ec: ExecutionContext) extends JSONWriteReadSupport {
+class Distance24Client @Inject()(config: Configuration, ws: WSClient)(implicit ec: ExecutionContext) extends JSONWriteReadSupport {
 
   implicit val backend = AkkaHttpBackend()
   implicit val formats = DefaultFormats
   implicit val serialization = Serialization
 
-  val host = "www.distance24.org"
+  val protocol = config.get[String]("external.distance24.protocol")
+  val host = config.get[String]("external.distance24.host")
   val path = "/route.json?stops=Buenos%20Aires|"
+  val timeout = config.get[Int]("external.distance24.timeoutinsecs")
 
   def getDistanceToBsAs(city: String): Either[HttpClientError, DistanceResponse] = {
 
-    val uri = s"https://$host$path$city"
+    val uri = s"$protocol://$host$path$city"
 
     val request = sttp
       .contentType("application/json")
@@ -35,7 +38,7 @@ class Distance24Client @Inject()(ws: WSClient)(implicit ec: ExecutionContext) ex
       .response(asString)
       .send()
 
-    Try(Await.result(request, Duration(20, "seconds"))) match {
+    Try(Await.result(request, Duration(timeout, "seconds"))) match {
       case Success(response) => response.body match {
         case Left(r) => Left(HttpClientError(response.code, Option(r)))
         case Right(body) => {

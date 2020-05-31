@@ -9,26 +9,28 @@ import model.errors.HttpClientError
 import org.json4s.DefaultFormats
 import org.json4s.native.JsonMethods.parse
 import org.json4s.native.Serialization
+import play.api.Configuration
 import play.api.libs.ws.WSClient
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}
 import scala.util.{Failure, Success, Try}
 
-class DataFixerClient @Inject()(ws: WSClient)(implicit ec: ExecutionContext) extends JSONWriteReadSupport {
+class DataFixerClient @Inject()(config: Configuration, ws: WSClient)(implicit ec: ExecutionContext) extends JSONWriteReadSupport {
 
   implicit val backend = AkkaHttpBackend()
   implicit val formats = DefaultFormats
   implicit val serialization = Serialization
 
-  val host = "data.fixer.io"
+  val protocol = config.get[String]("external.datafixer.protocol")
+  val host = config.get[String]("external.datafixer.host")
   val path = "/api/latest"
-  val apiKey = "ba9fb5b92b3889e5c29f5bbfde8c435a"
-
+  val apiKey = config.get[String]("external.datafixer.apikey")
+  val timeout = config.get[Int]("external.datafixer.timeoutinsecs")
 
   def getCurrencyRates(currency: String): Either[HttpClientError, CurrencyInformationResponse] = {
 
-    val uri = s"http://$host$path?access_key=$apiKey&base=$currency&symbols=USD"
+    val uri = s"$protocol://$host$path?access_key=$apiKey&base=$currency&symbols=USD"
 
     val request = sttp
       .contentType("application/json")
@@ -36,7 +38,7 @@ class DataFixerClient @Inject()(ws: WSClient)(implicit ec: ExecutionContext) ext
       .response(asString)
       .send()
 
-    Try(Await.result(request, Duration(20, "seconds"))) match {
+    Try(Await.result(request, Duration(timeout, "seconds"))) match {
       case Success(response) => response.body match {
         case Left(r) => Left(HttpClientError(response.code, Option(r)))
         case Right(body) => {

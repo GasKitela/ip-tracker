@@ -2,7 +2,7 @@ package repository
 
 import javax.inject.Inject
 import model.IpServiceMetrics
-import org.mongodb.scala.{MongoClient, MongoClientSettings, MongoCollection, ServerAddress}
+import org.mongodb.scala.{MongoClient, MongoClientSettings, ServerAddress}
 import play.api.Configuration
 import org.mongodb.scala.bson.codecs.Macros._
 import org.mongodb.scala.MongoClient.DEFAULT_CODEC_REGISTRY

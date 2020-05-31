@@ -5,13 +5,12 @@ import jsonsupport.JSONWriteReadSupport
 import play.api.libs.json.Json
 import play.api.mvc._
 import services.IpInformationService
-import scala.concurrent.ExecutionContext.Implicits.global
-
-import scala.util.Success
+import utils.MyExecutionContext
 
 @Singleton
 class IpInformationController @Inject()(cc: ControllerComponents,
-                                        ipInformationService: IpInformationService) extends AbstractController(cc) with JSONWriteReadSupport {
+                                        ipInformationService: IpInformationService)
+                                       (implicit ec: MyExecutionContext) extends AbstractController(cc) with JSONWriteReadSupport {
 
 
   def getIpInformation(ip: String) = Action { implicit req =>
