@@ -1,0 +1,29 @@
+@import model.api.response.IpTrackerResponse
+
+@(ipInfo: Seq[String], ipTrackerResponse: Option[IpTrackerResponse] = None)
+
+@main("ip tracker response") {
+    <div>
+        <h2>IP tracker response</h2>
+    </div>
+
+    <form method="get" action="result">
+        Ip to track: <input type="text" name="ip"/>
+
+            @ipTrackerResponse.map { ipTr =>
+                <div>
+                    <h1>ip: @ipTr.ip</h1>
+                    <h1>Country: @ipTr.country</h1>
+                    <h1>ISO Code: @ipTr.isoCode</h1>
+                    <h1>Languages: @ipTr.languages.mkString(", ")</h1>
+                    <h1>Currency: @ipTr.currency.currency @ipTr.currency.usdRate.map{ rate => (1 @ipTr.currency.currency: @rate U$S )} </h1>
+                    <h1>Timezones: @ipTr.hours.mkString(" o ")</h1>
+                    <h1>Distance: @ipTr.distance (Distance is measured from Buenos Aires to the Capital from the request's country, in this case, @ipTr.capital)</h1>
+                </div>
+            }
+            <div/>
+            <div>
+                <input type="submit" value="Search"/>
+            </div>
+    </form>
+}
