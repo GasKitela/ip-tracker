@@ -2,15 +2,14 @@ package external.ip2country.client
 
 import com.softwaremill.sttp.akkahttp.AkkaHttpBackend
 import com.softwaremill.sttp.{asString, sttp, _}
+import external.ip2country.model.api.response.IpInformationResponse
 import javax.inject.Inject
 import jsonsupport.JSONWriteReadSupport
-import external.ip2country.model.api.response.IpInformationResponse
 import model.errors.HttpClientError
 import org.json4s.DefaultFormats
 import org.json4s.native.JsonMethods.parse
 import org.json4s.native.Serialization
 import play.api.Configuration
-import play.api.libs.ws.WSClient
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}

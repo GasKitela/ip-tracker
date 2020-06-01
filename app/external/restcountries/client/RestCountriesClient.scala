@@ -2,9 +2,9 @@ package external.restcountries.client
 
 import com.softwaremill.sttp._
 import com.softwaremill.sttp.akkahttp.AkkaHttpBackend
+import external.restcountries.model.api.response.CountryInformationResponse
 import javax.inject.Inject
 import jsonsupport.JSONWriteReadSupport
-import external.restcountries.model.api.response.CountryInformationResponse
 import model.errors.HttpClientError
 import org.json4s.DefaultFormats
 import org.json4s.native.JsonMethods.parse

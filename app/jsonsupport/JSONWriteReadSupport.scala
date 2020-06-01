@@ -1,9 +1,9 @@
 package jsonsupport
 
-import external.restcountries.model.api.response.{CountryInformationResponse, Currency, Language}
 import external.datafixer.model.api.response.{CurrencyInformationResponse, Error}
 import external.distance24.model.DistanceResponse
 import external.ip2country.model.api.response.IpInformationResponse
+import external.restcountries.model.api.response.{CountryInformationResponse, Currency, Language}
 import model.api.response.{CurrencyResponse, IpMetricsResponse, IpTrackerResponse}
 import model.errors._
 import org.json4s.DefaultFormats

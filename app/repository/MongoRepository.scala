@@ -1,8 +1,8 @@
 package repository
 
 import org.mongodb.scala.bson.conversions.Bson
-import org.mongodb.scala.{Completed, MongoCollection}
 import org.mongodb.scala.model.Sorts._
+import org.mongodb.scala.{Completed, MongoCollection}
 
 import scala.concurrent.Future
 import scala.reflect.ClassTag

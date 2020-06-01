@@ -1,8 +1,8 @@
 package mapper
 
 import javax.inject.Inject
-import model.{CountryInformation, CurrencyRates, Distance, IpLocation, IpServiceMetrics}
 import model.api.response.{CurrencyResponse, IpMetricsResponse, IpTrackerResponse}
+import model._
 import org.joda.time.DateTime
 
 class IpTrackerMapper @Inject()() {

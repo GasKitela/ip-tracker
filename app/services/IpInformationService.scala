@@ -1,10 +1,10 @@
 package services
 
 import external.datafixer.facade.DataFixerFacade
-import javax.inject.{Inject, Singleton}
 import external.distance24.facade.Distance24Facade
 import external.ip2country.facade.Ip2CountryFacade
 import external.restcountries.facade.RestCountriesFacade
+import javax.inject.{Inject, Singleton}
 import mapper.IpTrackerMapper
 import model.api.response.{IpMetricsResponse, IpTrackerResponse}
 import model.errors.{HttpClientError, MongoError}

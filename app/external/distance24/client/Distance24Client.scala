@@ -2,7 +2,6 @@ package external.distance24.client
 
 import com.softwaremill.sttp._
 import com.softwaremill.sttp.akkahttp.AkkaHttpBackend
-import external.datafixer.model.api.response.CurrencyInformationResponse
 import external.distance24.model.DistanceResponse
 import javax.inject.Inject
 import jsonsupport.JSONWriteReadSupport
@@ -11,7 +10,6 @@ import org.json4s.DefaultFormats
 import org.json4s.native.JsonMethods.parse
 import org.json4s.native.Serialization
 import play.api.Configuration
-import play.api.libs.ws.WSClient
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}
