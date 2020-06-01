@@ -14,7 +14,8 @@ case class CountryInformation(country: String,
   }
 
   def getHoursForTimezones = timezones.map{ tz =>
-    val hour = DateTime.now(DateTimeZone.forID(tz.substring(3))).toString("HH:mm:ss")
+    val tzFormatted = if (tz.length > 3) tz.substring(3) else tz
+    val hour = DateTime.now(DateTimeZone.forID(tzFormatted)).toString("HH:mm:ss")
     s"$hour ($tz)"
   }
 
