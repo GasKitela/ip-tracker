@@ -4,7 +4,7 @@
 
 @main("ip tracker response") {
     <div>
-        <h2>IP tracker response</h2>
+        <h1>IP tracker response</h1>
     </div>
 
     <form method="get" action="result">
@@ -12,13 +12,13 @@
 
             @ipTrackerResponse.map { ipTr =>
                 <div>
-                    <h1>ip: @ipTr.ip</h1>
-                    <h1>Country: @ipTr.country</h1>
-                    <h1>ISO Code: @ipTr.isoCode</h1>
-                    <h1>Languages: @ipTr.languages.mkString(", ")</h1>
-                    <h1>Currency: @ipTr.currency.currency @ipTr.currency.usdRate.map{ rate => (1 @ipTr.currency.currency: @rate U$S )} </h1>
-                    <h1>Timezones: @ipTr.hours.mkString(" o ")</h1>
-                    <h1>Distance: @ipTr.distance (Distance is measured from Buenos Aires to the Capital from the request's country, in this case, @ipTr.capital)</h1>
+                    <h2>ip: @ipTr.ip</h2>
+                    <h2>Country: @ipTr.country</h2>
+                    <h2>ISO Code: @ipTr.isoCode</h2>
+                    <h2>Languages: @ipTr.languages.mkString(", ")</h2>
+                    <h2>Currency: @ipTr.currency.currency @ipTr.currency.usdRate.map{ rate => (1 @ipTr.currency.currency: @rate U$S )} </h2>
+                    <h2>Timezones: @ipTr.hours.mkString(" o ")</h2>
+                    <h2>Distance: @ipTr.distance (Distance is measured from Buenos Aires to the Capital from the request's country, in this case, @ipTr.capital)</h2>
                 </div>
             }
             <div/>

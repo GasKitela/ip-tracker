@@ -27,8 +27,6 @@ libraryDependencies ++= List(
   "org.mockito" % "mockito-core" % "2.18.3" % "test"*/
 )
 
-libraryDependencies += play.sbt.PlayImport.guice
-
 libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0"
 
 libraryDependencies ++= Seq( jdbc , ehcache , ws , specs2 % Test, guice )
