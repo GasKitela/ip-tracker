@@ -74,7 +74,7 @@ class IpInformationService @Inject()(config: Configuration,
 
     countryInfo <- getCountryInformation(ipInfo.country)
 
-    currencyInfo <- getCurrencyRates("EUR")
+    currencyInfo <- getCurrencyRates(countryInfo.getCurrency)
 
     distanceInfo <- getDistanceFromBsAsTo(countryInfo.capital)
 

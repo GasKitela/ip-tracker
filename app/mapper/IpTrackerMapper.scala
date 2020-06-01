@@ -13,9 +13,10 @@ class IpTrackerMapper @Inject()() {
                       DateTime.now().toString("MM/dd/yyyy HH:mm:ss"),
                       countryInfo.country,
                       ipLocation.countryCode,
+                      countryInfo.capital,
                       countryInfo.languages,
                       CurrencyResponse(currencyRates.base, currencyRates.rates.get("uSD")),
-                      countryInfo.timezones,
+                      countryInfo.getHoursForTimezones,
                       distanceResponse.distanceInKm)
   }
 

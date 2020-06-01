@@ -10,13 +10,12 @@ import org.json4s.DefaultFormats
 import org.json4s.native.JsonMethods.parse
 import org.json4s.native.Serialization
 import play.api.Configuration
-import play.api.libs.ws.WSClient
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}
 import scala.util.{Failure, Success, Try}
 
-class RestCountriesClient @Inject()(config: Configuration, ws: WSClient)(implicit ec: ExecutionContext) extends JSONWriteReadSupport {
+class RestCountriesClient @Inject()(config: Configuration)(implicit ec: ExecutionContext) extends JSONWriteReadSupport {
 
   implicit val backend = AkkaHttpBackend()
   implicit val formats = DefaultFormats
