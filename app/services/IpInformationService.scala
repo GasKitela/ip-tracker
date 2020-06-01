@@ -1,7 +1,5 @@
 package services
 
-import java.util.concurrent.TimeUnit
-
 import external.datafixer.facade.DataFixerFacade
 import javax.inject.{Inject, Singleton}
 import external.distance24.facade.Distance24Facade
@@ -13,14 +11,12 @@ import model.errors.{HttpClientError, MongoError}
 import model.{CountryInformation, CurrencyRates, Distance, IpLocation}
 import org.mongodb.scala.Completed
 import repository.IpServiceInfoRepository
-import play.api.Configuration
 
 import scala.concurrent.{ExecutionContext, Future}
 
 
 @Singleton
-class IpInformationService @Inject()(config: Configuration,
-                                     ip2CountryFacade: Ip2CountryFacade,
+class IpInformationService @Inject()(ip2CountryFacade: Ip2CountryFacade,
                                      restCountriesFacade: RestCountriesFacade,
                                      dataFixerFacade: DataFixerFacade,
                                      distance24Facade: Distance24Facade,

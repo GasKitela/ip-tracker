@@ -65,3 +65,7 @@ Response
 GET       /meli-ip-tracker/avg-search-distance
 
 Get the average distance for all requests as an Integer. 
+
+#Notes
+
+* Database name and collection are specified in application.conf.

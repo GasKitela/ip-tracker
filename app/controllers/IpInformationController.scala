@@ -1,16 +1,20 @@
 package controllers
 
+import akka.actor.ActorSystem
 import javax.inject.{Inject, Singleton}
 import jsonsupport.JSONWriteReadSupport
 import play.api.libs.json.Json
 import play.api.mvc._
 import services.IpInformationService
-import utils.MyExecutionContext
+
+import scala.concurrent.ExecutionContext
 
 @Singleton
 class IpInformationController @Inject()(cc: ControllerComponents,
-                                        ipInformationService: IpInformationService)
-                                       (implicit ec: MyExecutionContext) extends AbstractController(cc) with JSONWriteReadSupport {
+                                        ipInformationService: IpInformationService,
+                                        system: ActorSystem) extends AbstractController(cc) with JSONWriteReadSupport {
+
+  implicit val myExecutionContext: ExecutionContext = system.dispatchers.lookup("incoming-requests-dispatcher")
 
   def index = Action {
     Ok(views.html.index("App is ready to go!"))
