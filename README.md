@@ -1,4 +1,4 @@
-# ML-Ip-Tracker
+#-Ip-Tracker
 
 
 Web app to retrieve information about a given IP
@@ -12,17 +12,17 @@ Web app to retrieve information about a given IP
 
 #Usage
 
-* run with 'sbt run' ml-ip-tracker directory.
+* run with 'sbt run' ip-tracker directory.
 
 #Routes
 
 
-* GET    /meli-ip-tracker/search
+* GET    /ip-tracker/search
 
 Initial view, enter here the IP you wish to get information about.
-This will call /meli-ip-tracker/result and show the desired information.
+This will call /ip-tracker/result and show the desired information.
 
-* GET    /meli-ip-tracker/ip-information/:ip
+* GET    /ip-tracker/ip-information/:ip
 
 Service to get IP information as JSON.
 
@@ -46,8 +46,8 @@ Response
 
 ````
 
-* GET     /meli-ip-tracker/min-search-distance
-* GET     /meli-ip-tracker/max-search-distance
+* GET     /ip-tracker/min-search-distance
+* GET     /ip-tracker/max-search-distance
 
 These routes respectively get the information about the requested IP closest and furthest to Buenos Aires
 
@@ -62,7 +62,7 @@ Response
 
 ````
 
-GET       /meli-ip-tracker/avg-search-distance
+GET       /ip-tracker/avg-search-distance
 
 Get the average distance for all requests as an Integer. 
 
